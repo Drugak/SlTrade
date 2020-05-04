@@ -5,8 +5,8 @@ import 'package:SlTrade/models/SecuritieModel.dart';
 class SecuritieRepository {
   ApiProvider _provider = ApiProvider();
 
-  Future<SecuritieModel> fetchSecuritieData() async {
-    final response = await _provider.get("/getIssueList?0");
-    return SecuritieModel.fromJson(response);
+  Future<List> fetchSecuritieData() async {
+    var response = await _provider.get("/getIssueList?0");
+    return response;
   }
 }

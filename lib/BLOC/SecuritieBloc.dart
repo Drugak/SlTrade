@@ -8,14 +8,14 @@ class SecuritieBloc {
   SecuritieRepository _securitieRepository;
   StreamController _securitieController;
 
-  StreamSink<Response<SecuritieModel>> get securitieSink =>
+  StreamSink<Response<List<SecuritieModel>>> get securitieSink =>
       _securitieController.sink;
 
-  Stream<Response<SecuritieModel>> get securitieStream =>
+  Stream<Response<List<SecuritieModel>>> get securitieStream =>
       _securitieController.stream;
 
   SecuritieBloc() {
-    _securitieController = StreamController<Response<SecuritieModel>>();
+    _securitieController = StreamController<Response<List<SecuritieModel>>>();
     _securitieRepository = SecuritieRepository();
     fetchSecuritieData();
   }
@@ -23,8 +23,9 @@ class SecuritieBloc {
   fetchSecuritieData() async {
     securitieSink.add(Response.loading('Getting securities.'));
     try {
-      SecuritieModel securitiesResponse = await _securitieRepository.fetchSecuritieData();
-      securitieSink.add(Response.completed(securitiesResponse));
+      var securitiesResponse = await _securitieRepository.fetchSecuritieData();
+      List<SecuritieModel>_response = await securitiesResponse.map((m) => SecuritieModel.fromJson(m)).toList();
+      await securitieSink.add(Response.completed(_response));
     } catch (e) {
       securitieSink.add(Response.error(e.toString()));
       print(e);
