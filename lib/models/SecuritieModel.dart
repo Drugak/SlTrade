@@ -1,5 +1,11 @@
+import 'package:flutter/foundation.dart';
+
 class SecuritieModel {
   String rev;
+  String bid;
+  String biddelta;
+  String ask;
+  String askdelta;
   String ticker;
   String classificationcode;
   String classificationname;
@@ -22,6 +28,10 @@ class SecuritieModel {
       this.classificationname,
       this.issueprice,
       this.rid,
+      this.bid,
+      this.biddelta,
+      this.ask,
+      this.askdelta,
       this.currencycode,
       this.depoidname,
       this.lot,
@@ -34,6 +44,10 @@ class SecuritieModel {
 
   SecuritieModel.fromJson(Map<String, dynamic> json) {
     rev = json['rev'];
+    bid = json['bid'];
+    biddelta = json['biddelta'];
+    ask = json['ask'];
+    askdelta = json['askdelta'];
     ticker = json['ticker'];
     classificationcode = json['classificationcode'];
     classificationname = json['classificationname'];
@@ -53,6 +67,10 @@ class SecuritieModel {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
     data['rev'] = this.rev;
+    data['ask'] = this.ask;
+    data['askdelta'] = this.askdelta;
+    data['bid'] = this.bid;
+    data['biddelta'] = this.biddelta;
     data['ticker'] = this.ticker;
     data['classificationcode'] = this.classificationcode;
     data['classificationname'] = this.classificationname;
