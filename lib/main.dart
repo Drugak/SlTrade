@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 //Pages
 import 'package:SlTrade/screens/HomePage.dart';
 import 'package:SlTrade/screens/LoginPage.dart';
-import 'package:SlTrade/screens/ProfilePge.dart';
 import 'package:SlTrade/screens/TradingPage.dart';
 import 'package:SlTrade/screens/SecuritieInfoPage.dart';
 
@@ -14,7 +13,6 @@ void main() {
     home: HomePage(),
     routes: <String, WidgetBuilder> {
       '/login': (BuildContext context) => LoginPage(),
-      '/profile': (BuildContext context) => ProfilePage(),
       '/tranding': (BuildContext context) => TrandingPage(),
       '/securitie-page': (BuildContext context) => SecuritieInfoPage(),
     },

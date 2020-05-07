@@ -25,6 +25,7 @@ class _SecuritieInfoPageState extends State<SecuritieInfoPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
+          margin: EdgeInsets.symmetric(vertical: 40.0, horizontal: 16.0),
           padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 16.0),
           child: Column(children: <Widget>[
             /**
