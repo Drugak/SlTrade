@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
-import 'package:shifting_tabbar/shifting_tabbar.dart';
+import 'package:SlTrade/widgets/CustomTapBar.dart';
 
 class SecuritieInfoPage extends StatefulWidget {
   @override
@@ -28,7 +28,8 @@ class _SecuritieInfoPageState extends State<SecuritieInfoPage> {
       body: Container(
           margin: EdgeInsets.symmetric(vertical: 40.0, horizontal: 16.0),
           padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 16.0),
-          child: Column(children: <Widget>[
+          child: Column(
+            children: <Widget>[
             /**
          * Tiker name sectio.
          */
@@ -104,7 +105,7 @@ class _SecuritieInfoPageState extends State<SecuritieInfoPage> {
                 children: [
                   Expanded(
                       child: RaisedButton(
-                        padding: EdgeInsets.symmetric(vertical: 14, horizontal: 0),
+                    padding: EdgeInsets.symmetric(vertical: 14, horizontal: 0),
                     color: Colors.white,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5.0),
@@ -118,7 +119,7 @@ class _SecuritieInfoPageState extends State<SecuritieInfoPage> {
                   )),
                   Expanded(
                       child: RaisedButton(
-                        padding: EdgeInsets.symmetric(vertical: 14, horizontal: 0),
+                    padding: EdgeInsets.symmetric(vertical: 14, horizontal: 0),
                     color: Color.fromRGBO(50, 88, 119, 1),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5.0),
@@ -132,22 +133,9 @@ class _SecuritieInfoPageState extends State<SecuritieInfoPage> {
                             fontWeight: FontWeight.w500)),
                   )),
                 ]),
-                // ShiftingTabBar(
-                //     tabs: [
-                //         ShiftingTab(
-                //             icon: Icon(Icons.directions_bike),
-                //             text: "Test 1",
-                //         ),
-                //         ShiftingTab(
-                //             icon: Icon(Icons.directions_car),
-                //             text: "Test 2"
-                //         ),
-                //         ShiftingTab(
-                //             icon: Icon(Icons.directions_transit),
-                //             text: "Test 3"
-                //         ),
-                //     ],
-                // )
+            Expanded(
+                  child: CustomTabBar(),
+                )
           ])),
     );
   }
