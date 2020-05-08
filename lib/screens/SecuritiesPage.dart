@@ -1,9 +1,10 @@
-import 'package:SlTrade/widgets/AllSecurities.dart';
+
 import 'package:flutter/material.dart';
-import 'package:SlTrade/widgets/RialtoStatus.dart';
-import 'package:SlTrade/widgets/MySecurities.dart';
 import 'package:SlTrade/BLOC/SecuritieBloc.dart';
 import 'package:SlTrade/networking/Response.dart';
+import 'package:SlTrade/widgets/RialtoStatus.dart';
+import 'package:SlTrade/widgets/MySecurities.dart';
+import 'package:SlTrade/widgets/AllSecurities.dart';
 
 class SecuritiesPage extends StatefulWidget {
   @override
@@ -32,25 +33,24 @@ class _SecuritiesPageState extends State<SecuritiesPage> {
                     return Text(snapshot.data.message);
                     break;
                   case Status.COMPLETED:
-                     return Column(
+                    return ListView(
                       children: <Widget>[
-                        RialtoStatusWidget(),
-                        // SearchWidget(),
-                        MySecuritiesWidget(),
-                        AllSecuritiesWidget(
-                            listOfSecuritie: snapshot.data.data),
-                      ],
-                    );
+                          RialtoStatusWidget(),
+                          MySecuritiesWidget(),
+                          AllSecuritiesWidget(listOfSecuritie: snapshot.data.data)
+                        ]
+                      );
                     break;
                   case Status.ERROR:
                     return Text('Error');
                     break;
                 }
+              } else {
+                return Text('Что-то с ответом от сервера');
               }
-              return Text('Что-то с ответом от сервера');
             },
           ),
-        );
+    );
   }
 
   @override

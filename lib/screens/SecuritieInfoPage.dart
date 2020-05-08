@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sparkline/flutter_sparkline.dart';
+import 'package:shifting_tabbar/shifting_tabbar.dart';
 
 class SecuritieInfoPage extends StatefulWidget {
   @override
@@ -130,7 +131,23 @@ class _SecuritieInfoPageState extends State<SecuritieInfoPage> {
                             fontSize: 16,
                             fontWeight: FontWeight.w500)),
                   )),
-                ])
+                ]),
+                // ShiftingTabBar(
+                //     tabs: [
+                //         ShiftingTab(
+                //             icon: Icon(Icons.directions_bike),
+                //             text: "Test 1",
+                //         ),
+                //         ShiftingTab(
+                //             icon: Icon(Icons.directions_car),
+                //             text: "Test 2"
+                //         ),
+                //         ShiftingTab(
+                //             icon: Icon(Icons.directions_transit),
+                //             text: "Test 3"
+                //         ),
+                //     ],
+                // )
           ])),
     );
   }

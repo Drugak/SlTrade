@@ -17,6 +17,7 @@ environment:
   sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
+  shifting_tabbar: ^0.3.1
   flutter:
     sdk: flutter
 
