@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_sparkline/flutter_sparkline.dart';
 import 'package:SlTrade/screens/SecuritieInfoPage.dart';
+import 'package:SlTrade/widgets/BidAskDelta.dart';
+import 'package:SlTrade/widgets/Chart.dart';
 
 class SecuritieWidget extends StatelessWidget {
   SecuritieWidget({
@@ -23,22 +24,13 @@ class SecuritieWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    isPositive(value) {
-      if (value == null)
-        return TextStyle(fontSize: 12.0, color: Color.fromRGBO(50, 88, 119, 1));
-
-      return value > 0
-          ? TextStyle(fontSize: 12.0, color: Colors.green)
-          : TextStyle(fontSize: 12.0, color: Colors.red);
-    }
-
+    
     final textBigStyle = TextStyle(
         fontSize: 16.0,
         fontWeight: FontWeight.w500,
         color: Color.fromRGBO(50, 88, 119, 1));
     final textSmallStyle =
         TextStyle(fontSize: 12.0, color: Color.fromRGBO(50, 88, 119, 1));
-    var data = [1.0, 2.1, 4.0, 4.5, 4.2, 3.5, 6.0, 5.8, 4.7, 2.0];
 
     if (fullVersion) {
       return Text('большой виджет');
@@ -47,7 +39,15 @@ class SecuritieWidget extends StatelessWidget {
         onTap: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => SecuritieInfoPage()),
+              MaterialPageRoute(builder: (context) => 
+                SecuritieInfoPage(secureInfo: {
+                  'fullName':fullName,
+                  'bid':bid,
+                  'bidPercentage':bidPercentage,
+                  'ask':ask,
+                  'askPercentage':askPercentage,
+                  'tikerName': tikerName
+                  })),
             );
           },
         child: Container(
@@ -69,27 +69,7 @@ class SecuritieWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              Container(
-                width: 120,
-                child: new Sparkline(
-                  lineColor: Colors.black,
-                  fillMode: FillMode.below,
-                  fillGradient: LinearGradient(
-                    begin: Alignment.bottomCenter,
-                    end: Alignment
-                        .topCenter, // 10% of the width, so there are ten blinds.
-                    colors: [
-                      const Color(0xFAFAFAFA),
-                      const Color(0xFFeeeeee)
-                    ], // whitish to gray
-                    tileMode:
-                        TileMode.clamp, // repeats the gradient over the canvas
-                  ),
-                  lineWidth: 0.3,
-                  // fillMode: FillMode.below,
-                  data: data,
-                ),
-              ),
+              ChartWidget(tikerName: tikerName),
               Container(
                 width: 50.0,
                 child: Column(
@@ -97,8 +77,7 @@ class SecuritieWidget extends StatelessWidget {
                   children: <Widget>[
                     Text(bid != null ? '$bid' : '-', style: textBigStyle,
                           overflow: TextOverflow.ellipsis),
-                    Text(bidPercentage != null ? '$bidPercentage%' : '-',
-                        style: isPositive(bidPercentage))
+                    BidAskDeltaWidget(delta:bidPercentage)
                   ],
                 ),
               ),
@@ -109,9 +88,7 @@ class SecuritieWidget extends StatelessWidget {
                   children: <Widget>[
                     Text(ask != null ? '$ask' : '-',
                         overflow: TextOverflow.ellipsis, style: textBigStyle),
-                    Text(askPercentage != null ? '$askPercentage%' : '-',
-                        overflow: TextOverflow.ellipsis,
-                        style: isPositive(askPercentage))
+                    BidAskDeltaWidget(delta:askPercentage)
                   ],
                 ),
               )

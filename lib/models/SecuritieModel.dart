@@ -1,5 +1,3 @@
-import 'package:flutter/foundation.dart';
-
 class SecuritieModel {
   String rev;
   String bid;
