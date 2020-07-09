@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:SlTrade/widgets/StockGlass/index.dart';
 
 class CustomTabBar extends StatelessWidget {
   build(context) {
@@ -35,33 +36,14 @@ class CustomTabBar extends StatelessWidget {
               ),
             ),
           ),
-            // Specify a color to background or it will pick it from primaryColor of your app ThemeData
-            // color: Color.fromRGBO(236, 243, 248, 1),
-            // You can change brightness manually to change text color style to dark and light or 
-            // it will decide based on your background color
-            // brightness: Brightness.dark,
-          //   tabs: [
-          //     // Also you should use ShiftingTab widget instead of Tab widget to get shifting animation
-          //     ShiftingTab(
-          //       icon: Icon(Icons.home),
-          //       text: "Test 1",
-          //     ),
-          //     ShiftingTab(
-          //       icon: Icon(Icons.directions_bike),
-          //       text: "Test 2"
-          //     ),
-          //   ],
-          // ),
-          // Other parts of the app are exacly same as default TabBar widget
           body: TabBarView(
             children: [
-                ListView(
-                  children: <Widget>[
-                  Icon(Icons.home),
-                  Icon(Icons.home),
-                  Icon(Icons.home),
-                  ],
-                ),
+                // ListView(
+                //   children: <Widget>[
+                    
+                //   ],
+                // ),
+              StockGlass(tikerName: 'USDQ'),
               ListView(
                 physics: NeverScrollableScrollPhysics(),
                 children: <Widget>[Icon(Icons.home),],

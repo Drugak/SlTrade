@@ -59,7 +59,7 @@ class _SecuritieInfoPageState extends State<SecuritieInfoPage> {
             /**
          * Tiker name sectio.
          */
-            Text(widget.secureInfo['fullName'], style: bigTextStyle),
+            // Text(widget.secureInfo['fullName'], style: bigTextStyle),
             Text(widget.secureInfo['tikerName'], style: smallTextStyle),
             /**
          * Tiker Info sectio.

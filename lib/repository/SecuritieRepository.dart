@@ -10,7 +10,12 @@ class SecuritieRepository {
   }
 
   Future<List> fetchSecuritieHistoryData(tikerName) async {
-    var response = await _provider.get("/getdeallist?${tikerName}");
+    var response = await _provider.get("/getdeallist?$tikerName");
+    return response;
+  }
+
+  Future<List> fetchExchangeTransactionData(tikerName, bid_or_ask) async {
+    var response = await _provider.get("/getquotelist?name=$tikerName&side=$bid_or_ask");
     return response;
   }
 }
