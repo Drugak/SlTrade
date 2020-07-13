@@ -15,7 +15,8 @@ class ExchangeTransactionBloc {
       _securitieController.stream;
 
   ExchangeTransactionBloc(tikerName, bidOrAsk) {
-    _securitieController = StreamController<Response<List<ExchangeTransactionModel>>>();
+    _securitieController =
+        StreamController<Response<List<ExchangeTransactionModel>>>();
     _securitieRepository = SecuritieRepository();
     fetchExchangeTransaction(tikerName, bidOrAsk);
   }
@@ -23,8 +24,11 @@ class ExchangeTransactionBloc {
   fetchExchangeTransaction(tikerName, bidOrAsk) async {
     securitieSink.add(Response.loading('Getting Exchange Transaction Data.'));
     try {
-      var securitiesResponse = await _securitieRepository.fetchExchangeTransactionData(tikerName, bidOrAsk);
-      List<ExchangeTransactionModel>_response = await securitiesResponse.map((m) => ExchangeTransactionModel.fromJson(m)).toList();
+      var securitiesResponse = await _securitieRepository
+          .fetchExchangeTransactionData(tikerName, bidOrAsk);
+      List<ExchangeTransactionModel> _response = await securitiesResponse
+          .map((m) => ExchangeTransactionModel.fromJson(m))
+          .toList();
       await securitieSink.add(Response.completed(_response));
     } catch (e) {
       securitieSink.add(Response.error(e.toString()));
