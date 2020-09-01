@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:SlTrade/BLOC/SecuritieBloc.dart';
 import 'package:SlTrade/networking/Response.dart';
@@ -23,33 +22,31 @@ class _SecuritiesPageState extends State<SecuritiesPage> {
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
-          onRefresh: () => _bloc.fetchSecuritieData(),
-          child: StreamBuilder(
-            stream: _bloc.securitieStream,
-            builder: (context, snapshot) {
-              if (snapshot.hasData) {
-                switch (snapshot.data.status) {
-                  case Status.LOADING:
-                    return Text(snapshot.data.message);
-                    break;
-                  case Status.COMPLETED:
-                    return ListView(
-                      children: <Widget>[
-                          RialtoStatusWidget(),
-                          MySecuritiesWidget(),
-                          AllSecuritiesWidget(listOfSecuritie: snapshot.data.data)
-                        ]
-                      );
-                    break;
-                  case Status.ERROR:
-                    return Text('Error');
-                    break;
-                }
-              } else {
-                return Text('Что-то с ответом от сервера');
-              }
-            },
-          ),
+      onRefresh: () => _bloc.fetchSecuritieData(),
+      child: StreamBuilder(
+        stream: _bloc.securitieStream,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            switch (snapshot.data.status) {
+              case Status.LOADING:
+                return Text(snapshot.data.message);
+                break;
+              case Status.COMPLETED:
+                return ListView(children: <Widget>[
+                  RialtoStatusWidget(),
+                  MySecuritiesWidget(),
+                  AllSecuritiesWidget(listOfSecuritie: snapshot.data.data)
+                ]);
+                break;
+              case Status.ERROR:
+                return Text('Error');
+                break;
+            }
+          } else {
+            return Text('Что-то с ответом от сервера');
+          }
+        },
+      ),
     );
   }
 

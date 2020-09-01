@@ -24,7 +24,9 @@ class SecuritieBloc {
     securitieSink.add(Response.loading('Getting securities.'));
     try {
       var securitiesResponse = await _securitieRepository.fetchSecuritieData();
-      List<SecuritieModel>_response = await securitiesResponse.map((m) => SecuritieModel.fromJson(m)).toList();
+      List<SecuritieModel> _response = await securitiesResponse
+          .map((m) => SecuritieModel.fromJson(m))
+          .toList();
       await securitieSink.add(Response.completed(_response));
     } catch (e) {
       securitieSink.add(Response.error(e.toString()));

@@ -13,9 +13,9 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-          resizeToAvoidBottomInset: false,
-          body:SecuritiesPage(),
-        ),
+        resizeToAvoidBottomInset: false,
+        body: SecuritiesPage(),
+      ),
     );
   }
 }

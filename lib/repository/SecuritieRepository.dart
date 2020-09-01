@@ -15,7 +15,8 @@ class SecuritieRepository {
   }
 
   Future<List> fetchExchangeTransactionData(tikerName, bid_or_ask) async {
-    var response = await _provider.get("/getquotelist?name=$tikerName&side=$bid_or_ask");
+    var response =
+        await _provider.get("/getquotelist?name=$tikerName&side=$bid_or_ask");
     return response;
   }
 }

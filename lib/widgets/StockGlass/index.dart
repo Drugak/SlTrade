@@ -1,5 +1,4 @@
-import 'dart:developer';
-
+import 'package:SlTrade/widgets/StockGlass/GlassItem.dart';
 import 'package:flutter/material.dart';
 import 'package:SlTrade/networking/Response.dart';
 import 'package:SlTrade/BLOC/ExchangeTransactionBloc.dart';
@@ -23,12 +22,14 @@ class _StockGlassState extends State<StockGlass> {
         ExchangeTransactionBloc(widget.tikerName, 'B');
 
     return StreamBuilder(
-        stream: _blocAsk.securitieStream,
+        stream: _blocBid.securitieStream,
         builder: (context, snapshot1) {
+          var biger1 = snapshot1.data.data.first.pric;
           return StreamBuilder(
-              stream: _blocBid.securitieStream,
+              stream: _blocAsk.securitieStream,
               builder: (context, snapshot2) {
-                if (snapshot1.hasData) {
+                var biger2 = snapshot2.data.data.last.pric;
+                if (snapshot1.hasData && snapshot2.hasData) {
                   switch (snapshot1.data.status) {
                     case Status.COMPLETED:
                       return Flex(
@@ -41,27 +42,7 @@ class _StockGlassState extends State<StockGlass> {
                             itemCount: snapshot1.data.data.length,
                             itemBuilder: (context, index) {
                               final item = snapshot1.data.data[index];
-                              return Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Expanded(
-                                        child: Container(
-                                      margin: EdgeInsets.only(right: 5),
-                                      height: 56,
-                                      color: Colors.amberAccent,
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(item.qty),
-                                          Text(item.pric)
-                                        ],
-                                      ),
-                                    ))
-                                  ]);
+                              return GlassItem(item: item, biger: biger1);
                             },
                           )),
                           Expanded(
@@ -70,27 +51,7 @@ class _StockGlassState extends State<StockGlass> {
                             itemCount: snapshot2.data.data.length,
                             itemBuilder: (context, index) {
                               final item = snapshot2.data.data[index];
-                              return Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Expanded(
-                                        child: Container(
-                                      margin: EdgeInsets.only(right: 5),
-                                      height: 56,
-                                      color: Colors.amberAccent,
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          Text(item.pric),
-                                          Text(item.qty),
-                                        ],
-                                      ),
-                                    ))
-                                  ]);
+                              return GlassItem(item: item, biger: biger2);
                             },
                           ))
                         ],
