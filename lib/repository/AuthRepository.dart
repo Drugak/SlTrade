@@ -1,11 +1,13 @@
 import 'package:SlTrade/networking/ApiProvider.dart';
 import 'dart:async';
+import 'dart:convert';
 
-class AuthRepository {
+class AuthPreloginModelRepository {
   ApiProvider _provider = ApiProvider();
 
-  Future<List> fetchSecuritieData() async {
-    var response = await _provider.post("/prelogin", {"username": "Demo1"});
+  final body = jsonEncode({"username": "Demo1"});
+  Future<Map> fetchPreLoginData() async {
+    var response = await _provider.post("/prelogin", body);
     return response;
   }
 }

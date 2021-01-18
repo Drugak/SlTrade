@@ -13,7 +13,6 @@ class ChartWidget extends StatefulWidget {
 }
 
 class _ChartWidgetState extends State<ChartWidget> {
-
   @override
   Widget build(BuildContext context) {
     SecuritieHistoryBloc _bloc = SecuritieHistoryBloc(widget.tikerName);

@@ -11,7 +11,7 @@ void main() {
   runApp(MaterialApp(
     title: 'SlTrade',
     home: HomePage(),
-    routes: <String, WidgetBuilder> {
+    routes: <String, WidgetBuilder>{
       '/login': (BuildContext context) => LoginPage(),
       '/tranding': (BuildContext context) => TrandingPage(),
       '/securitie-page': (BuildContext context) => SecuritieInfoPage(),

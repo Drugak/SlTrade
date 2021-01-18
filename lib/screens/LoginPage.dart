@@ -11,56 +11,60 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Container(
-        child: Form(
-      key: _formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            margin: const EdgeInsets.all(16.0),
-            child: TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'Enter your ID',
-              ),
-              validator: (value) {
-                if (value.isEmpty) {
-                  return value;
-                }
-                return null;
-              },
-            ),
-          ),
-          Container(
-            margin: const EdgeInsets.all(16.0),
-            child: TextFormField(
-              decoration: const InputDecoration(
-                hintText: 'Enter your password',
-              ),
-              validator: (value) {
-                if (value.isEmpty) {
-                  return value;
-                }
-                return null;
-              },
-            ),
-          ),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: Center(
-              child: RaisedButton(
-                onPressed: () {
-                  // Validate will return true if the form is valid, or false if
-                  // the form is invalid.
-                  if (_formKey.currentState.validate()) {
-                    // Process data.
+        child: Scaffold(
+            body: Container(
+      margin: const EdgeInsets.only(top: 100.0),
+      child: Form(
+        key: _formKey,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Container(
+              margin: const EdgeInsets.all(16.0),
+              child: TextFormField(
+                decoration: const InputDecoration(
+                  hintText: 'Enter your ID',
+                ),
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return value;
                   }
+                  return null;
                 },
-                child: Text('Submit'),
               ),
             ),
-          ),
-        ],
+            Container(
+              margin: const EdgeInsets.all(16.0),
+              child: TextFormField(
+                decoration: const InputDecoration(
+                  hintText: 'Enter your password',
+                ),
+                validator: (value) {
+                  if (value.isEmpty) {
+                    return value;
+                  }
+                  return null;
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 16.0),
+              child: Center(
+                child: RaisedButton(
+                  onPressed: () {
+                    // Validate will return true if the form is valid, or false if
+                    // the form is invalid.
+                    if (_formKey.currentState.validate()) {
+                      // Process data.
+                    }
+                  },
+                  child: Text('Submit'),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
-    ));
+    )));
   }
 }
