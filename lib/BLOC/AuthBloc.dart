@@ -1,22 +1,24 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:SlTrade/networking/Response.dart';
 import 'package:SlTrade/repository/AuthRepository.dart';
 import 'package:SlTrade/models/AuthModel.dart';
+import 'package:password_hash/password_hash.dart';
 
 class AuthBloc {
   AuthPreloginModelRepository _authPreloginModelRepository;
   StreamController _authPreloginModelController;
 
-  StreamSink<Response<List<AuthPreloginModel>>> get authSink =>
+  StreamSink<Response<AuthPreloginModel>> get authSink =>
       _authPreloginModelController.sink;
 
-  Stream<Response<List<AuthPreloginModel>>> get authStream =>
+  Stream<Response<AuthPreloginModel>> get authStream =>
       _authPreloginModelController.stream;
 
   AuthBloc() {
     _authPreloginModelController =
-        StreamController<Response<List<AuthPreloginModel>>>();
+        StreamController<Response<AuthPreloginModel>>();
     _authPreloginModelRepository = AuthPreloginModelRepository();
     preLoginRequest();
   }
@@ -25,26 +27,19 @@ class AuthBloc {
     authSink.add(Response.loading('Pre login request.'));
     try {
       var authResponse = await _authPreloginModelRepository.fetchPreLoginData();
-      print("======*****=======");
-      print(authResponse);
-      print("======*****=======");
-      // List<AuthPreloginModel> _response = authResponse
-      //     .map((m) => print(m)
-      //         // (m) => AuthPreloginModel.fromJson(m)
-      //         )
-      //     .toList();
+      var _response = AuthPreloginModel.fromJson(authResponse);
 
-      authResponse.map((m) {
-        print(m);
-        return m;
-      }
-          // (m) => AuthPreloginModel.fromJson(m)
-          );
+      var generator = new PBKDF2();
 
-      // authSink.add(Response.completed(_response));
+      var hash = generator.generateKey(
+          'secretkey', _response.salt, _response.iterations, _response.keysize);
 
-      // print(_response);
-      print("DRUGAK");
+      print("=======%%%%%%%%++++++++++++");
+
+      print(hash);
+      print("=======%%%%%%%%++++++++++++");
+
+      authSink.add(Response.completed(_response));
     } catch (e) {
       authSink.add(Response.error(e.toString()));
       print(e);

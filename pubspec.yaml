@@ -17,11 +17,11 @@ environment:
   sdk: ">=2.2.0 <3.0.0"
 
 dependencies:
+  password_hash: 2.0.0
   crypto: ^2.0.0
   shifting_tabbar: ^0.3.1
   flutter:
     sdk: flutter
-
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -39,7 +39,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -76,7 +75,7 @@ flutter:
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
 flutter_icons:
-  image_path_ios: 'lib/assets/sltrade.png'
-  image_path_android: 'lib/assets/sltrade.png'
+  image_path_ios: "lib/assets/sltrade.png"
+  image_path_android: "lib/assets/sltrade.png"
   android: true
   ios: true

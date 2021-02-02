@@ -31,6 +31,7 @@ class _HomePageState extends State<HomePage> {
                   case Status.LOADING:
                     break;
                   case Status.COMPLETED:
+                    return Text('eeeeee');
                     break;
                   case Status.ERROR:
                     return Text('Error');

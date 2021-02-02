@@ -1,9 +1,9 @@
 class AuthPreloginModel {
   String salt;
-  String keysize;
+  int keysize;
   String pass;
   String iv;
-  String iterations;
+  int iterations;
   String token;
 
   AuthPreloginModel(
@@ -14,7 +14,7 @@ class AuthPreloginModel {
       this.iterations,
       this.token});
 
-  AuthPreloginModel.fromJson(Map<String, dynamic> json) {
+  AuthPreloginModel.fromJson(Map<dynamic, dynamic> json) {
     salt = json['salt'];
     keysize = json['keysize'];
     pass = json['pass'];
@@ -23,8 +23,8 @@ class AuthPreloginModel {
     token = json['token'];
   }
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+  Map<dynamic, dynamic> toJson() {
+    final Map<dynamic, dynamic> data = new Map<dynamic, dynamic>();
     data['salt'] = this.salt;
     data['keysize'] = this.keysize;
     data['pass'] = this.pass;
