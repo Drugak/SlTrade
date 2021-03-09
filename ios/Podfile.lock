@@ -1,0 +1,35 @@
+PODS:
+  - cipher2 (0.0.1):
+    - CryptoSwift (~> 0.13.1)
+    - Flutter
+  - CryptoSwift (0.13.1)
+  - Flutter (1.0.0)
+  - native_crypto (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - cipher2 (from `.symlinks/plugins/cipher2/ios`)
+  - Flutter (from `Flutter`)
+  - native_crypto (from `.symlinks/plugins/native_crypto/ios`)
+
+SPEC REPOS:
+  trunk:
+    - CryptoSwift
+
+EXTERNAL SOURCES:
+  cipher2:
+    :path: ".symlinks/plugins/cipher2/ios"
+  Flutter:
+    :path: Flutter
+  native_crypto:
+    :path: ".symlinks/plugins/native_crypto/ios"
+
+SPEC CHECKSUMS:
+  cipher2: 215b8aa78b783cf5a17eb7b72fda55d025dbeefc
+  CryptoSwift: ff68c35a53e03177d31aaa2c1e8b3e010aeed6cb
+  Flutter: 434fef37c0980e73bb6479ef766c45957d4b510c
+  native_crypto: 33b8108e3fcc10052862b69863efc2304c59cb2f
+
+PODFILE CHECKSUM: aafe91acc616949ddb318b77800a7f51bffa2a4c
+
+COCOAPODS: 1.10.0
