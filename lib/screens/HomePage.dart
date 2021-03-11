@@ -3,7 +3,7 @@ import 'package:SlTrade/BLOC/AuthBloc.dart';
 import 'package:SlTrade/networking/Response.dart';
 
 //Pages
-// import 'package:SlTrade/screens/SecuritiesPage.dart';
+import 'package:SlTrade/screens/SecuritiesPage.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -31,7 +31,12 @@ class _HomePageState extends State<HomePage> {
                   case Status.LOADING:
                     break;
                   case Status.COMPLETED:
-                    return Text('eeeeee');
+                    return Container(
+                      child: Scaffold(
+                        resizeToAvoidBottomInset: false,
+                        body: SecuritiesPage(),
+                      ),
+                    );
                     break;
                   case Status.ERROR:
                     return Text('Error');
@@ -41,12 +46,6 @@ class _HomePageState extends State<HomePage> {
                 return Text('Что-то с ответом от сервера');
               }
             }));
-    // return Container(
-    //   child: Scaffold(
-    //     resizeToAvoidBottomInset: false,
-    //     body: SecuritiesPage(),
-    //   ),
-    // );
   }
 
   @override
