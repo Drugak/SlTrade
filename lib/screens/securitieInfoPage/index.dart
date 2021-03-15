@@ -7,6 +7,7 @@ import 'package:SlTrade/screens/style/SecuritieInfoPageStyle.dart';
 import 'package:SlTrade/screens/securitieInfoPage/module/TikerNameSection.dart';
 import 'package:SlTrade/screens/securitieInfoPage/module/TikerCostInfoSection.dart';
 import 'package:SlTrade/screens/securitieInfoPage/module/TikerGraphSection.dart';
+import 'package:SlTrade/screens/securitieInfoPage/module/MyTikerInfo.dart';
 
 class SecuritieInfoPage extends StatefulWidget {
   final secureInfo;
@@ -36,31 +37,23 @@ class _SecuritieInfoPageState extends State<SecuritieInfoPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
-          margin: EdgeInsets.symmetric(vertical: 40.0, horizontal: 16.0),
+          margin: EdgeInsets.symmetric(vertical: 100.0, horizontal: 16.0),
           padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 16.0),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                /**
-                * Tiker name section.
-                */
                 TikerNameSection(tikerName: {
                   'fullname': widget.secureInfo['fullName'],
                   'shortName': widget.secureInfo['tikerName']
                 }),
-                /**
-                * Tiker Info sectio.
-                */
                 TikerCostInfoSection(tikerCostInfo: {
                   'bid': widget.secureInfo['bid'],
                   'bidPercentage': widget.secureInfo['bidPercentage'],
                   'ask': widget.secureInfo['ask'],
                   'askPercentage': widget.secureInfo['askPercentage']
                 }),
-                /**
-               * Big graph section
-               */
                 TikerGraphSection(),
+                MyTikerInfo(),
                 Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.max,

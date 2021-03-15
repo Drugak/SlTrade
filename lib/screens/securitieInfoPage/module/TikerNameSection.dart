@@ -17,6 +17,7 @@ class _TikerNameSectionState extends State<TikerNameSection> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         /**
         * Tiker name section.
