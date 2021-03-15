@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:SlTrade/screens/HomePage.dart';
 import 'package:SlTrade/screens/LoginPage.dart';
 import 'package:SlTrade/screens/TradingPage.dart';
-import 'package:SlTrade/screens/SecuritieInfoPage.dart';
+import 'package:SlTrade/screens/securitieInfoPage/index.dart';
 
 void main() {
   runApp(MaterialApp(
