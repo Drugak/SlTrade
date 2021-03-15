@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:SlTrade/screens/SecuritieInfoPage.dart';
+import 'package:SlTrade/screens/securitieInfoPage/index.dart';
 import 'package:SlTrade/widgets/BidAskDelta.dart';
 import 'package:SlTrade/widgets/Chart.dart';
 
