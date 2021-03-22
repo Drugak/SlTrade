@@ -8,6 +8,7 @@ import 'package:SlTrade/screens/securitieInfoPage/module/TikerNameSection.dart';
 import 'package:SlTrade/screens/securitieInfoPage/module/TikerCostInfoSection.dart';
 import 'package:SlTrade/screens/securitieInfoPage/module/TikerGraphSection.dart';
 import 'package:SlTrade/screens/securitieInfoPage/module/MyTikerInfo.dart';
+import 'package:SlTrade/widgets/HeaderNavigation.dart';
 
 class SecuritieInfoPage extends StatefulWidget {
   final secureInfo;
@@ -37,11 +38,12 @@ class _SecuritieInfoPageState extends State<SecuritieInfoPage> {
     return Scaffold(
       resizeToAvoidBottomInset: false,
       body: Container(
-          margin: EdgeInsets.symmetric(vertical: 100.0, horizontal: 16.0),
+          margin: EdgeInsets.symmetric(vertical: 60.0, horizontal: 16.0),
           padding: EdgeInsets.symmetric(vertical: 0.0, horizontal: 16.0),
           child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
+                HeaderNavigation(),
                 TikerNameSection(tikerName: {
                   'fullname': widget.secureInfo['fullName'],
                   'shortName': widget.secureInfo['tikerName']
